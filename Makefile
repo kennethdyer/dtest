@@ -9,7 +9,7 @@ install:
 	$(I) $(C)
 
 lint:
-	golint $(C)
+	golint ./... 
 
 fmt:
 	gofmt -w .
