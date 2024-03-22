@@ -27,17 +27,13 @@ TODO
 History
 *******
 
-v0.1.x
-======
+DTest v0.1.x
+============
 
 Status: *In-progress*
 
 The target for this release series is a proof of concept for
 deployment testing.  We aim to implement the following features:
-
-* [**TODO**]: Implement `Cobra
-  <https://github.com/spf13/cobra>`_ and `Viper
-  <https://github.com/spf13/viper>`_ interfaces for CLI.
 * [**TODO**]: Implement a logging module, with pass through to
   `Log <https://github.com/charmbracelet/log>`_ and level
   configuration.
@@ -61,4 +57,14 @@ deployment testing.  We aim to implement the following features:
 Note, there is no operation to provision containers at this
 stage. Deployments will be tested against manually built
 containers.
+
+v0.1.0
+------
+
+* Implements `Cobra <https://github.com/spf13/cobra>`_ and
+  `Viper <https://github.com/spf13/viper>`_ interfaces for the
+  DTest command-line interface.
+
+
+
 
