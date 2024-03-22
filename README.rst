@@ -7,8 +7,8 @@ in Podman before the content ships to public documentation
 sites.  Instructions are stored in YAML and sync to
 reStructuredText files.
 
-DTest is intended for writers who *detest* when installation
-pages get fouled by untested instructions. 
+DTest is intended for writers who *detest* installation pages
+fouled by untested instructions. 
 
 Installation
 ************
