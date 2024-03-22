@@ -56,6 +56,7 @@ deployment testing.  We aim to implement the following features:
   <https://github.com/charmbracelet/bubbletea>`_ TUI to allow
   users to monitor the progress of deployment tests from the
   terminal.
+* [**TODO**]: Update README on usage.
 
 Note, there is no operation to provision containers at this
 stage. Deployments will be tested against manually built
