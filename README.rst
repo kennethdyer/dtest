@@ -34,9 +34,7 @@ Status: *In-progress*
 
 The target for this release series is a proof of concept for
 deployment testing.  We aim to implement the following features:
-* [**TODO**]: Implement a logging module, with pass through to
-  `Log <https://github.com/charmbracelet/log>`_ and level
-  configuration.
+
 * [**TODO**]: Implement functions and commands to configure,
   status start, and stop the Podman machine.  Add a conditional
   call to the stop function to the shutdown process in the
@@ -64,6 +62,10 @@ v0.1.0
 * Implements `Cobra <https://github.com/spf13/cobra>`_ and
   `Viper <https://github.com/spf13/viper>`_ interfaces for the
   DTest command-line interface.
+* Implement a logging initialization for the  
+  `log <https://github.com/charmbracelet/log>`_ module, incling 
+  level configuration.
+
 
 
 
