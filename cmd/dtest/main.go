@@ -1,29 +1,22 @@
 package main
 
 import (
-	// Vendor Imports
-	"github.com/spf13/cobra"
-
-	// Local Imports
 	"github.com/kennethdyer/dtest"
+	"github.com/spf13/cobra"
 )
 
-var cmd = cobra.Command{
+var cmd = &cobra.Command{
 	Use:     "dtest",
-	Short:   "Deployment Testing Tool",
-	Long:    "A Deployment Testing Tool for those who Detest Fouled Installation Instructions",
+	Short:   "The Deployment Testing Tool",
 	Version: dtest.Version,
 }
 
 func main() {
 
-	// dtest ls command and subcommands
-	lsCmd.AddCommand(&topCmd)
-	lsCmd.AddCommand(&targCmd)
-	lsCmd.AddCommand(&imgCmd)
-	cmd.AddCommand(&lsCmd)
+	// Add vm Subcommand
+	vm.AddCommand(vmList)
+	cmd.AddCommand(vm)
 
-	// dtest run command
-	cmd.AddCommand(&runCmd)
+	// Execute Command
 	cmd.Execute()
 }
