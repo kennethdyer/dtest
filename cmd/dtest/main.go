@@ -13,7 +13,11 @@ var cmd = &cobra.Command{
 
 func main() {
 
-	// Add vm Subcommand
+	// Ad img Sub-commands
+	cmdImg.AddCommand(imgLs)
+	cmd.AddCommand(cmdImg)
+
+	// Add vm Sub-commands
 	vm.AddCommand(vmList)
 	vm.AddCommand(vmStart)
 	vm.AddCommand(vmStatus)
