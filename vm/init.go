@@ -39,6 +39,10 @@ func findRelevantVM() (string, string, bool) {
 // Init runs from the command-line and is used to initialize a
 // virtual machine in Podman for use by DTest.
 func Init() bool {
+	if !CheckPlatform() {
+		linuxError()
+		return true
+	}
 	name, _, ready := findRelevantVM()
 
 	if ready {

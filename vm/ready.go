@@ -2,12 +2,15 @@ package vm
 
 // Ready Initializes and/or starts the DTest configured virtual
 // machine for use by podman.
-func Ready() bool {
+func Ready() (bool, bool) {
+	if !CheckPlatform() {
+		return true, false
+	}
 	name, vmLine, ok := findRelevantVM()
 	if !ok {
 		ok = Init()
 		if !ok {
-			return false
+			return false, false
 		}
 	}
 	// Reset Variables
@@ -17,12 +20,12 @@ func Ready() bool {
 	switch status {
 	case "Currently running":
 		lgr.Debugf("DTest virtual machine %s is currently running", name)
-		return true
+		return true, true
 	default:
 		ok = Start()
 		if ok {
-			return true
+			return true, true
 		}
 	}
-	return false
+	return false, false
 }

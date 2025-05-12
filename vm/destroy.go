@@ -8,6 +8,11 @@ import (
 // Destroy removes the DTest configured virtual machine from
 // Podman.
 func Destroy() bool {
+	if !CheckPlatform() {
+		linuxError()
+		return true
+	}
+
 	name, _, ok := findRelevantVM()
 	if !ok {
 		lgr.Errorf("DTest VM (%s) does not exist", name)

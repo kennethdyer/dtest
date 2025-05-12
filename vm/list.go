@@ -12,6 +12,10 @@ var matchDtest = regexp.MustCompile("^dtest-")
 // List builds a list of virtual machines, singling out those
 // configured for use by DTest, then prints its name to stdout.
 func List() {
+	if !CheckPlatform() {
+		linuxError()
+		return
+	}
 	ret, ok := findVMs()
 	if ok {
 		fmt.Println(strings.Join(ret, "\n"))

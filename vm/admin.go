@@ -3,11 +3,16 @@ package vm
 import (
 	"os"
 	"os/exec"
+	"runtime"
 )
 
 // Start runs from the command-line and is used to start the
 // DTest configured virtual machine in Podman.
 func Start() bool {
+	if !CheckPlatform() {
+		linuxError()
+		return true
+	}
 	name, vmLine, ok := findRelevantVM()
 	if !ok {
 		lgr.Errorf("DTest virtual machine %s does not exist", name)
@@ -36,6 +41,10 @@ func Start() bool {
 // Stop runs from the command-line and is used to stop the
 // DTest configured virtual machine in Podman.
 func Stop() bool {
+	if !CheckPlatform() {
+		linuxError()
+		return true
+	}
 	name, vmLine, ok := findRelevantVM()
 	if !ok {
 		lgr.Errorf("DTest virtual machine %s does not exist", name)
@@ -59,4 +68,27 @@ func Stop() bool {
 	}
 	lgr.Infof("DTest virtual machine %s stopped", name)
 	return true
+}
+
+// CheckPlatform uses runtime.GOOS to identify the platform
+// DTest is running on. If the platform is macOS, it means
+// Podman requires VM management. If the platform is Linux, it
+// means DTest should ignore VM commands. If Windows, it should
+// error out, as DTest doesn't support Windows.
+func CheckPlatform() bool {
+	name := runtime.GOOS
+	switch name {
+	case "linux":
+		return false
+	case "darwin":
+		return true
+	default:
+		lgr.Fatalf("DTest does not support the %s platform", name)
+		os.Exit(1)
+	}
+	return false
+}
+
+func linuxError() {
+	lgr.Errorf("DTest does not require virtual machine management when run on Linux")
 }
