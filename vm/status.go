@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/viper"
 )
 
+var vmLineSplit = regexp.MustCompile("  +")
+
 // Status is run from the command-line and is used to print the
 // status of the virtual machine in Podman configured for use in
 // this project by DTest.
@@ -17,8 +19,7 @@ func Status() {
 		lgr.Errorf("DTest VM (%s) does not exist", name)
 		return
 	}
-	re := regexp.MustCompile("  +")
-	line := re.Split(vmLine, -1)
+	line := vmLineSplit.Split(vmLine, -1)
 
 	con := []string{}
 	if viper.GetBool("verbosity") {

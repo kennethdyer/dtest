@@ -33,6 +33,7 @@ func RunVMStatus() {
 // there is no dtest configured VM on the system, or if there is
 // and it's already running.
 func RunVMStart() {
+	vm.Start()
 }
 
 // RunVMStop runs from the command-line and stops the dtest
@@ -40,6 +41,7 @@ func RunVMStart() {
 // there is no dtest configured VM on the system, or if there is
 // and it's already stopped.
 func RunVMStop() {
+	vm.Stop()
 }
 
 // RunVMInit runs from the command-line and initializes the
@@ -56,4 +58,5 @@ func RunVMInit() {
 // RunVMDestroy runs from the command-line and destroys the
 // Podman virtual machine used by DTest.
 func RunVMDestroy() {
+	vm.Destroy()
 }
