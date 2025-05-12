@@ -3,7 +3,7 @@ B=go build
 I=go install
 C=./cmd/dtest
 
-all: tidy lint fmt install
+all: tidy lint vet fmt install
 
 install:
 	$(I) $(C)
@@ -11,10 +11,11 @@ install:
 tidy:
 	go mod tidy
 
-lint: vet
+lint: 
+	golint ./...
 
 vet:
-	go vet
+	go vet ./...
 
 check:
 	staticcheck

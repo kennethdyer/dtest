@@ -15,6 +15,11 @@ func main() {
 
 	// Add vm Subcommand
 	vm.AddCommand(vmList)
+	vm.AddCommand(vmStart)
+	vm.AddCommand(vmStatus)
+	vm.AddCommand(vmStop)
+	vm.AddCommand(vmInit)
+	vm.AddCommand(vmDestroy)
 	cmd.AddCommand(vm)
 
 	// Execute Command
